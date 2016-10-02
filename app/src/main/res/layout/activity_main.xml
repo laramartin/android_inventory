@@ -6,29 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center_vertical">
 
         <ImageView
             android:id="@+id/empty_view_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/empty_white_box"
-            android:layout_centerHorizontal="true"
-            android:layout_alignTop="@+id/empty_view_text"/>
+            android:src="@drawable/empty_white_box"/>
 
         <TextView
             android:id="@+id/empty_view_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_margin="16dp"
-            android:text="Nada por aquí..."/>
+            android:text="Nothing here..."/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/list_view"
