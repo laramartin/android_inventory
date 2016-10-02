@@ -54,7 +54,7 @@
         jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="24.0.2"
-        sha1="ca129785e59d2b9cc3a34dfe284eec32ee28a0b2">
+        sha1="4190d9c681f676f403f24abf628455f10c3b8cf8">
         <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f14c9e53807295106d224bcdc434c68186d9f2bc/classes.dex" />
     </item>
     <item
@@ -89,7 +89,7 @@
         jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.2"
-        sha1="b5e1eab3618e77577c32c50afc992f9f969c0712">
+        sha1="a174545f442b01d8213fad6ef4a4215006e4a6b6">
         <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_07fbbf60f383e4eb4c399f79e090c770f9446c38/classes.dex" />
     </item>
     <item

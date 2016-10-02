@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.v(LOG_TAG, "Floating button pressed");
             }
         });
+
+
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        View emptyView = findViewById(R.id.empty_view);
+        listView.setEmptyView(emptyView);
+
 
 
     }
