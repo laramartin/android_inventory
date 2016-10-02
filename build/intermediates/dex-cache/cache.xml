@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="771b3cc0e597b54da25f8086ba73180c59c6bc71">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.0_72e346f372b6ae56786ab73b0d8f57f237b2e7be/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="045be695d968dd707691cc55d23746dbf8cf569a">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.0_072e0507ec1ce9b2a08ac7e19fa91b1ad3acee51/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="6eb9107eb34d2fe2b020662b7fbbec991dcba846">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.0_c28fb819dae50ec857bd4cc30c44dee4667d3edf/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="c84e216d9bf618464d6b9564d71d9a656433e7c4">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.0_35f697478ff76b93c8c3ad65292806fbe787ffa0/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="fcc945a86ebcbf527429acb8216ec7dae2c06417">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.0_cc7b589626ffefe45e7266fd4d81f9591480e912/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="f3ee23ef25c9a8fe3d40246d0b7097267963a612">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.0_ed2aba7a75aa658a4cdd66b188f347cfa4de6332/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="6e02e34594ebe9c0501ffda8dd48497f81b82977">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.0_9728d6945ef1d34fca4ee574fd73816e77026daf/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="ca129785e59d2b9cc3a34dfe284eec32ee28a0b2">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f14c9e53807295106d224bcdc434c68186d9f2bc/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/design/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="23eb0d2998a782213b56168cbf23a0688b9111d9">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.0_03903787e97a897532708566a43d23eb4738dcaf/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="032a4b53def5e2ceedfc2e793b126c0163cfa1dd">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.0_e20b7f2f7170535004397232771727965c0ef936/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="60d7b23621d31e6f42f4f76f16af467e57a20cda">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.0_3f8ee2bf986da26a2a713b293b201eb47d15e29b/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="c3c638be6e650b165ab9ae144857b64e82787fad">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.0_d2fbd952b28f5de54f0a794e633d504bb4181938/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="b5e1eab3618e77577c32c50afc992f9f969c0712">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_07fbbf60f383e4eb4c399f79e090c770f9446c38/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.0/support-annotations-24.2.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="6be858a75633b1f0a2d24cad740db57775cb6871">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.0_056768f608780a568895e1d0bf5f7b0ddf26cf65/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="c755536e5a100d9c76c8ea0b72f76c018f7a9de2">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.0_455dd860c08699c92a52be218018e3b4560b2908/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="beac40bcc8a320a896dd15f5109cfcaea5e1e0e3">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.0_b3dc891366b942f71cb26981f2a5b89af7bcb590/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="d8bd2268fdcbfd52c76ade65d9900cd8def93a44">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.0_1b379cde38c096eee8b71bc16b0411b6b63c4cd4/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="45f5eda279825ff470e3f51019d374d1ef61e000">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.0_835876b032f3156f9a46fcf7c6a25a16e6dec0bb/classes.dex" />
+    </item>
+    <item
+        jar="/Users/lara/GitHub/android_inventory/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="f9b41622897665678d31d78e57a361cb0cebcb0d">
+        <dex dex="/Users/lara/GitHub/android_inventory/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.0_2fea52cb598dca4c495703fbdf1a578547526eb8/classes.dex" />
+    </item>
+
+</items>
