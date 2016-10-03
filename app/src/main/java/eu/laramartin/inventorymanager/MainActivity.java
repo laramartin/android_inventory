@@ -1,5 +1,6 @@
 package eu.laramartin.inventorymanager;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +37,13 @@ public class MainActivity extends AppCompatActivity {
         View emptyView = findViewById(R.id.empty_view);
         listView.setEmptyView(emptyView);
 
-
+        Cursor cursor = dbHelper.readStock();
+        while (cursor.moveToNext()) {
+            Log.v(LOG_TAG, "Stock: " + cursor.getInt(0) + " " + cursor.getString(1) +
+                    " " + cursor.getString(2) + " " + cursor.getInt(3));
+        }
 
     }
+
+
 }

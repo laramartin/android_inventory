@@ -2,6 +2,7 @@ package eu.laramartin.inventorymanager.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -34,7 +35,7 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(StockContract.StockEntry.COLUMN_NAME, "Ramune caramel");
-        values.put(StockContract.StockEntry.COLUMN_PRICE, "10");
+        values.put(StockContract.StockEntry.COLUMN_PRICE, "100 yen");
         values.put(StockContract.StockEntry.COLUMN_QUANTITY, 25);
         values.put(StockContract.StockEntry.COLUMN_SUPPLIER_NAME, "Gumi Candy JP");
         values.put(StockContract.StockEntry.COLUMN_SUPPLIER_PHONE, "+81-123-456-789");
@@ -43,4 +44,26 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         Log.v(LOG_TAG, "ID row inserted: " + String.valueOf(id));
     }
 
+    public Cursor readStock() {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] projection = {
+                StockContract.StockEntry._ID,
+                StockContract.StockEntry.COLUMN_NAME,
+                StockContract.StockEntry.COLUMN_PRICE,
+                StockContract.StockEntry.COLUMN_QUANTITY,
+                StockContract.StockEntry.COLUMN_SUPPLIER_NAME,
+                StockContract.StockEntry.COLUMN_SUPPLIER_PHONE,
+                StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL
+        };
+        Cursor cursor = db.query(
+                StockContract.StockEntry.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        return cursor;
+    }
 }
