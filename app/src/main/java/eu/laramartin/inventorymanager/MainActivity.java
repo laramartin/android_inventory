@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import eu.laramartin.inventorymanager.data.InventoryDbHelper;
 
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         ListView listView = (ListView) findViewById(R.id.list_view);
         View emptyView = findViewById(R.id.empty_view);
         listView.setEmptyView(emptyView);
@@ -53,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.swapCursor(dbHelper.readStock());
+    }
 }
