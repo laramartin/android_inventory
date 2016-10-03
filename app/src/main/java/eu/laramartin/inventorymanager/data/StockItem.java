@@ -44,4 +44,16 @@ public class StockItem {
     public String getSupplierEmail() {
         return supplierEmail;
     }
+
+    @Override
+    public String toString() {
+        return "StockItem{" +
+                "productName='" + productName + '\'' +
+                ", price='" + price + '\'' +
+                ", quantity=" + quantity +
+                ", supplierName='" + supplierName + '\'' +
+                ", supplierPhone='" + supplierPhone + '\'' +
+                ", supplierEmail='" + supplierEmail + '\'' +
+                '}';
+    }
 }
