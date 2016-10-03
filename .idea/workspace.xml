@@ -62,8 +62,8 @@
       <file leaf-file-name="StockContract.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/eu/laramartin/inventorymanager/data/StockContract.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47775176">
-              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.63700235">
+              <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -1741,8 +1741,8 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors_brown_orange.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/eu/laramartin/inventorymanager/data/StockContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/eu/laramartin/inventorymanager/data/InventoryDbHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/eu/laramartin/inventorymanager/data/StockContract.java" />
       </list>
     </option>
   </component>
@@ -1985,7 +1985,7 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="true" />
       <option name="PREFERRED_AVD" value="" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -2176,8 +2176,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/eu/laramartin/inventorymanager/data/StockContract.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47775176">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.63700235">
+          <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
           <folding />
         </state>
       </provider>
