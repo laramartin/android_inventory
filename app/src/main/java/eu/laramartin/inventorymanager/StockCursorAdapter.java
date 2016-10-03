@@ -36,7 +36,7 @@ public class StockCursorAdapter extends CursorAdapter {
         String price = cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_PRICE));
 
         nameTextView.setText(name);
-        quantityTextView.setText(quantity);
+        quantityTextView.setText(String.valueOf(quantity));
         priceTextView.setText(price);
     }
 }
