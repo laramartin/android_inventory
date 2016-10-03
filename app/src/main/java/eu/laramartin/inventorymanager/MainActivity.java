@@ -1,5 +1,6 @@
 package eu.laramartin.inventorymanager;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -26,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, NewMessageActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                startActivity(intent);
                 Log.v(LOG_TAG, "Floating button pressed");
-                dbHelper.insertItem();
+                //dbHelper.insertItem();
             }
         });
 
