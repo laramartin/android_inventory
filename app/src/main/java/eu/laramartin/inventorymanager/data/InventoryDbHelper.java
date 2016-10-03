@@ -67,4 +67,30 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         );
         return cursor;
     }
+
+    public Cursor readItem(long itemId) {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] projection = {
+                StockContract.StockEntry._ID,
+                StockContract.StockEntry.COLUMN_NAME,
+                StockContract.StockEntry.COLUMN_PRICE,
+                StockContract.StockEntry.COLUMN_QUANTITY,
+                StockContract.StockEntry.COLUMN_SUPPLIER_NAME,
+                StockContract.StockEntry.COLUMN_SUPPLIER_PHONE,
+                StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL
+        };
+        String selection = StockContract.StockEntry._ID + "=?";
+        String[] selectionArgs = new String[] { String.valueOf(itemId) };
+
+        Cursor cursor = db.query(
+                StockContract.StockEntry.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        return cursor;
+    }
 }

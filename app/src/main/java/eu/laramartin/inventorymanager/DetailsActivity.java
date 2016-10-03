@@ -1,17 +1,18 @@
 package eu.laramartin.inventorymanager;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import eu.laramartin.inventorymanager.data.InventoryDbHelper;
+import eu.laramartin.inventorymanager.data.StockContract;
 import eu.laramartin.inventorymanager.data.StockItem;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -33,6 +34,14 @@ public class DetailsActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        nameEdit = (EditText) findViewById(R.id.product_name_edit);
+        priceEdit = (EditText) findViewById(R.id.price_edit);
+        quantityEdit = (EditText) findViewById(R.id.quantity_edit);
+        supplierNameEdit = (EditText) findViewById(R.id.supplier_name_edit);
+        supplierPhoneEdit = (EditText) findViewById(R.id.supplier_phone_edit);
+        supplierEmailEdit = (EditText) findViewById(R.id.supplier_email_edit);
+
         dbHelper = new InventoryDbHelper(this);
         Intent intent = getIntent();
         Bundle currentItemExtras = intent.getExtras();
@@ -42,14 +51,9 @@ public class DetailsActivity extends AppCompatActivity {
         } else {
             currentItemId = currentItemExtras.getLong("itemId");
             setTitle(getString(R.string.editor_activity_title_edit_item));
-        }
+            addValuesToEditItem(currentItemId);
 
-        nameEdit = (EditText) findViewById(R.id.product_name_edit);
-        priceEdit = (EditText) findViewById(R.id.price_edit);
-        quantityEdit = (EditText) findViewById(R.id.quantity_edit);
-        supplierNameEdit = (EditText) findViewById(R.id.supplier_name_edit);
-        supplierPhoneEdit = (EditText) findViewById(R.id.supplier_phone_edit);
-        supplierEmailEdit = (EditText) findViewById(R.id.supplier_email_edit);
+        }
     }
 
     @Override
@@ -124,5 +128,15 @@ public class DetailsActivity extends AppCompatActivity {
         }
     }
 
+    private void addValuesToEditItem(long itemId) {
+        Cursor cursor = dbHelper.readItem(itemId);
+        cursor.moveToFirst();
+        nameEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_NAME)));
+        priceEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_PRICE)));
+        quantityEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_QUANTITY)));
+        supplierNameEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_NAME)));
+        supplierPhoneEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_PHONE)));
+        supplierEmailEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL)));
+    }
 
 }
