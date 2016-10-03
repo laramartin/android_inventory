@@ -100,7 +100,20 @@ public class DetailsActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_details, menu);
         return true;
     }
-    
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        // If this is a new pet, hide the "Delete" menu item.
+        if (currentItemId == 0) {
+            MenuItem deleteMenuItem = menu.findItem(R.id.action_delete);
+            MenuItem orderMenuItem = menu.findItem(R.id.action_order);
+            deleteMenuItem.setVisible(false);
+            orderMenuItem.setVisible(false);
+        }
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
