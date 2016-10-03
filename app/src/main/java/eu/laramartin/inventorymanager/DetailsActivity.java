@@ -2,6 +2,7 @@ package eu.laramartin.inventorymanager;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -46,7 +47,10 @@ public class DetailsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_save:
                 // save item in DB
-                addItemToDb();
+                if (!addItemToDb()) {
+                    // saying to onOptionsItemSelected that user clicked button
+                    return true;
+                }
                 Toast.makeText(DetailsActivity.this, "Item saved! ", Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
@@ -54,7 +58,30 @@ public class DetailsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void addItemToDb() {
+    private boolean addItemToDb() {
+        boolean isAllOk = true;
+        if (!checkIfValueSet(nameEdit, "name")) {
+            isAllOk = false;
+        }
+        if (!checkIfValueSet(priceEdit, "price")) {
+            isAllOk = false;
+        }
+        if (!checkIfValueSet(quantityEdit, "quantity")) {
+            isAllOk = false;
+        }
+        if (!checkIfValueSet(supplierNameEdit, "supplier name")) {
+            isAllOk = false;
+        }
+        if (!checkIfValueSet(supplierPhoneEdit, "supplier phone")) {
+            isAllOk = false;
+        }
+        if (!checkIfValueSet(supplierEmailEdit, "supplier email")) {
+            isAllOk = false;
+        }
+
+        if (!isAllOk) {
+            return false;
+        }
         StockItem item = new StockItem(
                 nameEdit.getText().toString(),
                 priceEdit.getText().toString(),
@@ -64,6 +91,18 @@ public class DetailsActivity extends AppCompatActivity {
                 supplierEmailEdit.getText().toString()
         );
         dbHelper.insertItem(item);
+        return true;
+    }
+
+    private boolean checkIfValueSet(EditText text, String description) {
+        if (TextUtils.isEmpty(text.getText())) {
+//            Toast.makeText(DetailsActivity.this, "Missing product " + description, Toast.LENGTH_SHORT).show();
+            text.setError("Missing product " + description);
+            return false;
+        } else {
+            text.setError(null);
+            return true;
+        }
     }
 
 
