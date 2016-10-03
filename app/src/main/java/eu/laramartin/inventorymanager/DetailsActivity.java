@@ -83,12 +83,12 @@ public class DetailsActivity extends AppCompatActivity {
             return false;
         }
         StockItem item = new StockItem(
-                nameEdit.getText().toString(),
-                priceEdit.getText().toString(),
-                Integer.parseInt(quantityEdit.getText().toString()),
-                supplierNameEdit.getText().toString(),
-                supplierPhoneEdit.getText().toString(),
-                supplierEmailEdit.getText().toString()
+                nameEdit.getText().toString().trim(),
+                priceEdit.getText().toString().trim(),
+                Integer.parseInt(quantityEdit.getText().toString().trim()),
+                supplierNameEdit.getText().toString().trim(),
+                supplierPhoneEdit.getText().toString().trim(),
+                supplierEmailEdit.getText().toString().trim()
         );
         dbHelper.insertItem(item);
         return true;
