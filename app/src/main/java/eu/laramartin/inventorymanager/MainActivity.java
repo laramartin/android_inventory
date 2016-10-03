@@ -7,14 +7,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
+import eu.laramartin.inventorymanager.data.InventoryDbHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     private final static String LOG_TAG = MainActivity.class.getCanonicalName();
+    InventoryDbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dbHelper = new InventoryDbHelper(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 //                Intent intent = new Intent(MainActivity.this, NewMessageActivity.class);
 //                startActivity(intent);
                 Log.v(LOG_TAG, "Floating button pressed");
+                dbHelper.insertItem();
             }
         });
 
