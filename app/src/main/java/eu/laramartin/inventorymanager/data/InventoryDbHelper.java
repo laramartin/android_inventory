@@ -20,16 +20,8 @@ public abstract class InventoryDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_TABLE_STOCK = "CREATE TABLE " + StockContract.StockEntry.TABLE_NAME + "(" +
-                StockContract.StockEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                StockContract.StockEntry.COLUMN_NAME + " TEXT NOT NULL," +
-                StockContract.StockEntry.COLUMN_PRICE + " TEXT NOT NULL," +
-                StockContract.StockEntry.COLUMN_QUANTITY + " INTEGER NOT NULL DEFAULT 0," +
-                StockContract.StockEntry.COLUMN_SUPPLIER_NAME + " TEXT NOT NULL," +
-                StockContract.StockEntry.COLUMN_SUPPLIER_PHONE + " TEXT NOT NULL," +
-                StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL + " TEXT NOT NULL" + ")";
-        Log.v(LOG_TAG, "create table: " + CREATE_TABLE_STOCK);
-        db.execSQL(CREATE_TABLE_STOCK);
+        Log.v(LOG_TAG, "create table: " + StockContract.StockEntry.CREATE_TABLE_STOCK);
+        db.execSQL(StockContract.StockEntry.CREATE_TABLE_STOCK);
     }
 
     @Override

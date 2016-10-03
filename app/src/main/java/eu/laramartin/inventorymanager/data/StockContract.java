@@ -22,11 +22,20 @@ public class StockContract {
         public static final String COLUMN_SUPPLIER_PHONE = "supplierPhone";
         public static final String COLUMN_SUPPLIER_EMAIL = "supplierEmail";
 
-        public static final String SUPPLIER_NAME_DRINKS = "Durinku JP";
-        public static final String SUPPLIER_PHONE_DRINKS = "+81 123-456-789";
-        public static final String SUPPLIER_EMAIL_DRINKS = "durinkuJP@gmail.com";
-        public static final String SUPPLIER_NAME_FOODS = "Gumi Candy JP";
-        public static final String SUPPLIER_PHONE_FOODS = "+81 987-654-321";
-        public static final String SUPPLIER_EMAIL_FOODS = "gumi_candyJP@gmail.com";
+        public static final String CREATE_TABLE_STOCK = "CREATE TABLE " + StockContract.StockEntry.TABLE_NAME + "(" +
+                StockContract.StockEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                StockContract.StockEntry.COLUMN_NAME + " TEXT NOT NULL," +
+                StockContract.StockEntry.COLUMN_PRICE + " TEXT NOT NULL," +
+                StockContract.StockEntry.COLUMN_QUANTITY + " INTEGER NOT NULL DEFAULT 0," +
+                StockContract.StockEntry.COLUMN_SUPPLIER_NAME + " TEXT NOT NULL," +
+                StockContract.StockEntry.COLUMN_SUPPLIER_PHONE + " TEXT NOT NULL," +
+                StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL + " TEXT NOT NULL" + ")";
+
+//        public static final String SUPPLIER_NAME_DRINKS = "Durinku JP";
+//        public static final String SUPPLIER_PHONE_DRINKS = "+81 123-456-789";
+//        public static final String SUPPLIER_EMAIL_DRINKS = "durinkuJP@gmail.com";
+//        public static final String SUPPLIER_NAME_FOODS = "Gumi Candy JP";
+//        public static final String SUPPLIER_PHONE_FOODS = "+81 987-654-321";
+//        public static final String SUPPLIER_EMAIL_FOODS = "gumi_candyJP@gmail.com";
     }
 }
