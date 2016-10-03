@@ -93,4 +93,17 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         );
         return cursor;
     }
+
+    public void updateItem(long currentItemId, StockItem item) {
+        Log.v(LOG_TAG, "Update item " + currentItemId + " " + item.toString());
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(StockContract.StockEntry.COLUMN_QUANTITY, item.getQuantity());
+        String selection = StockContract.StockEntry._ID + "=?";
+        String[] selectionArgs = new String[] { String.valueOf(currentItemId) };
+        int rowsUpdated = db.update(StockContract.StockEntry.TABLE_NAME,
+                values, selection, selectionArgs);
+        Log.v(LOG_TAG, "rows updated: " + rowsUpdated);
+    }
+
 }

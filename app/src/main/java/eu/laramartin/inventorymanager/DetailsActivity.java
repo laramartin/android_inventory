@@ -1,6 +1,5 @@
 package eu.laramartin.inventorymanager;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -8,8 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageButton;
 
 import eu.laramartin.inventorymanager.data.InventoryDbHelper;
 import eu.laramartin.inventorymanager.data.StockContract;
@@ -26,6 +26,8 @@ public class DetailsActivity extends AppCompatActivity {
     EditText supplierPhoneEdit;
     EditText supplierEmailEdit;
     long currentItemId;
+    ImageButton decreaseQuantity;
+    ImageButton increaseQuantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +43,56 @@ public class DetailsActivity extends AppCompatActivity {
         supplierNameEdit = (EditText) findViewById(R.id.supplier_name_edit);
         supplierPhoneEdit = (EditText) findViewById(R.id.supplier_phone_edit);
         supplierEmailEdit = (EditText) findViewById(R.id.supplier_email_edit);
+        decreaseQuantity = (ImageButton) findViewById(R.id.decrease_quantity);
+        increaseQuantity = (ImageButton) findViewById(R.id.increase_quantity);
 
         dbHelper = new InventoryDbHelper(this);
-        Intent intent = getIntent();
-        Bundle currentItemExtras = intent.getExtras();
+        currentItemId = getIntent().getLongExtra("itemId", 0);
 
-        if (currentItemExtras == null) {
+        if (currentItemId == 0) {
             setTitle(getString(R.string.editor_activity_title_new_item));
         } else {
-            currentItemId = currentItemExtras.getLong("itemId");
             setTitle(getString(R.string.editor_activity_title_edit_item));
             addValuesToEditItem(currentItemId);
-
         }
+
+        decreaseQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                subtractOneToQuantity();
+            }
+        });
+
+        increaseQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sumOneToQuantity();
+            }
+        });
+    }
+
+    private void subtractOneToQuantity() {
+        String previousValueString = quantityEdit.getText().toString();
+        int previousValue;
+        if (previousValueString.isEmpty()) {
+            return;
+        } else if (previousValueString.equals("0")) {
+            return;
+        } else {
+            previousValue = Integer.parseInt(previousValueString);
+            quantityEdit.setText(String.valueOf(previousValue - 1));
+        }
+    }
+
+    private void sumOneToQuantity() {
+        String previousValueString = quantityEdit.getText().toString();
+        int previousValue;
+        if (previousValueString.isEmpty()) {
+            previousValue = 0;
+        } else {
+            previousValue = Integer.parseInt(previousValueString);
+        }
+        quantityEdit.setText(String.valueOf(previousValue + 1));
     }
 
     @Override
@@ -61,7 +100,7 @@ public class DetailsActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_details, menu);
         return true;
     }
-
+    
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -71,7 +110,6 @@ public class DetailsActivity extends AppCompatActivity {
                     // saying to onOptionsItemSelected that user clicked button
                     return true;
                 }
-                Toast.makeText(DetailsActivity.this, "Item saved! ", Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
             case android.R.id.home:
@@ -101,7 +139,6 @@ public class DetailsActivity extends AppCompatActivity {
         if (!checkIfValueSet(supplierEmailEdit, "supplier email")) {
             isAllOk = false;
         }
-
         if (!isAllOk) {
             return false;
         }
@@ -113,13 +150,16 @@ public class DetailsActivity extends AppCompatActivity {
                 supplierPhoneEdit.getText().toString().trim(),
                 supplierEmailEdit.getText().toString().trim()
         );
-        dbHelper.insertItem(item);
+        if (currentItemId == 0) {
+            dbHelper.insertItem(item);
+        } else {
+            dbHelper.updateItem(currentItemId, item);
+        }
         return true;
     }
 
     private boolean checkIfValueSet(EditText text, String description) {
         if (TextUtils.isEmpty(text.getText())) {
-//            Toast.makeText(DetailsActivity.this, "Missing product " + description, Toast.LENGTH_SHORT).show();
             text.setError("Missing product " + description);
             return false;
         } else {
@@ -137,6 +177,13 @@ public class DetailsActivity extends AppCompatActivity {
         supplierNameEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_NAME)));
         supplierPhoneEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_PHONE)));
         supplierEmailEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL)));
+        nameEdit.setEnabled(false);
+        priceEdit.setEnabled(false);
+        supplierNameEdit.setEnabled(false);
+        supplierPhoneEdit.setEnabled(false);
+        supplierEmailEdit.setEnabled(false);
     }
+
+
 
 }
