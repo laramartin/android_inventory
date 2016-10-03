@@ -15,4 +15,10 @@
     <string name="action_save">Save item</string>
     <string name="editor_activity_title_new_item">Add new item</string>
     <string name="editor_activity_title_edit_item">Edit item</string>
+    <string name="menu_order_item">Order item</string>
+    <string name="menu_delete_item">Delete item</string>
+    <string name="menu_delete_all_data">Delete all data</string>
+    <string name="phone">Phone</string>
+    <string name="email">E-mail</string>
+    <string name="order_message">You can place an order for this item by phone or e-mail</string>
 </resources>

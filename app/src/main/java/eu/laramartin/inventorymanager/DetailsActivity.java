@@ -1,8 +1,12 @@
 package eu.laramartin.inventorymanager;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -104,11 +108,12 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        // If this is a new pet, hide the "Delete" menu item.
         if (currentItemId == 0) {
-            MenuItem deleteMenuItem = menu.findItem(R.id.action_delete);
+            MenuItem deleteOneItemMenuItem = menu.findItem(R.id.action_delete_item);
+            MenuItem deleteAllMenuItem = menu.findItem(R.id.action_delete_all_data);
             MenuItem orderMenuItem = menu.findItem(R.id.action_order);
-            deleteMenuItem.setVisible(false);
+            deleteOneItemMenuItem.setVisible(false);
+            deleteAllMenuItem.setVisible(false);
             orderMenuItem.setVisible(false);
         }
         return true;
@@ -127,6 +132,16 @@ public class DetailsActivity extends AppCompatActivity {
                 return true;
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
+                return true;
+            case R.id.action_order:
+                // dialog with phone and email
+                showDeleteConfirmationDialog();
+                return true;
+            case R.id.action_delete_item:
+                // delete one item
+                return true;
+            case R.id.action_delete_all_data:
+                //delete all data
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -197,6 +212,32 @@ public class DetailsActivity extends AppCompatActivity {
         supplierEmailEdit.setEnabled(false);
     }
 
-
+    private void showDeleteConfirmationDialog() {
+        // Create an AlertDialog.Builder and set the message, and click listeners
+        // for the positive and negative buttons on the dialog.
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.order_message);
+        builder.setPositiveButton(R.string.phone, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // intent to phone
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + supplierPhoneEdit.getText().toString().trim()));
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton(R.string.email, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked the "Cancel" button, so dismiss the dialog
+                // and continue editing the pet.
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+                // intent to email
+            }
+        });
+        // Create and show the AlertDialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 
 }
