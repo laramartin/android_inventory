@@ -2,8 +2,8 @@
     <string name="app_name">Inventory Manager</string>
     <string name="sale_button">Sale</string>
     <string name="new_product">Add new item</string>
-    <string name="hint_email_address">email address</string>
-    <string name="supplier_email_title">Supplier Email Address</string>
+    <string name="hint_email_address">supplier@gmail.com</string>
+    <string name="supplier_email_title">Supplier E-mail Address</string>
     <string name="supplier_phone_hint">e.g. +81 000-000-000</string>
     <string name="supplier_phone_title">Supplier Phone</string>
     <string name="supplier_name_hint">Candy Supplier GmbH</string>
@@ -11,5 +11,5 @@
     <string name="quantity_title">Quantity</string>
     <string name="price_title">Price</string>
     <string name="product_name_title">Product Name</string>
-    <string name="currency_japan">¥</string>
+    <string name="currency_details">¥ / item</string>
 </resources>

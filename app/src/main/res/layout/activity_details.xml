@@ -11,95 +11,97 @@
     tools:context="eu.laramartin.inventorymanager.DetailsActivity">
 
     <TextView
+        android:id="@+id/product_name_title"
+        style="@style/details_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/product_name_title"
-        android:id="@+id/product_name_title" />
+        android:text="@string/product_name_title" />
 
     <EditText
+        android:id="@+id/product_name_edit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/product_name_edit" />
+        android:layout_height="wrap_content" />
 
     <TextView
+        android:id="@+id/price_title"
+        style="@style/details_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/price_title"
-        android:id="@+id/price_title" />
+        android:text="@string/price_title" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <EditText
+            android:id="@+id/price_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/price_edit" />
-
-        <Spinner
-            android:id="@+id/currency_spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-        </Spinner>
+            android:text="@string/currency_details" />
 
     </LinearLayout>
 
 
-
-
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/quantity_title"
-    android:id="@+id/quantity_title" />
+        android:id="@+id/quantity_title"
+        style="@style/details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quantity_title" />
 
     <EditText
+        android:id="@+id/quantity_edit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/quantity_edit" />
+        android:layout_height="wrap_content" />
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/supplier_name_title"
-    android:id="@+id/supplier_name_title" />
+        android:id="@+id/supplier_name_title"
+        style="@style/details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/supplier_name_title" />
 
     <EditText
+        android:id="@+id/supplier_name_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
         android:hint="@string/supplier_name_hint"
-        android:id="@+id/supplier_name_edit" />
+        android:inputType="text" />
 
     <TextView
+        android:id="@+id/supplier_phone_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/supplier_phone_title"
-        android:id="@+id/supplier_phone_title" />
+        style="@style/details_title" />
 
     <EditText
+        android:id="@+id/supplier_phone_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/supplier_phone_edit"
-        android:inputType="phone"
-        android:hint="@string/supplier_phone_hint"/>
+        android:hint="@string/supplier_phone_hint"
+        android:inputType="phone" />
 
     <TextView
+        android:id="@+id/supplier_email_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/supplier_email_title"
-        android:id="@+id/supplier_email_title" />
+        style="@style/details_title" />
 
     <EditText
+        android:id="@+id/supplier_email_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/supplier_email_edit"
         android:hint="@string/hint_email_address"
         android:inputType="textEmailAddress" />
-
 
 
 </LinearLayout>
