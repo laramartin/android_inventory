@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long itemId) {
                 Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                //intent.putExtra("itemId", itemId);
+                intent.putExtra("itemId", itemId);
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "item id: " + itemId, Toast.LENGTH_SHORT).show();
             }

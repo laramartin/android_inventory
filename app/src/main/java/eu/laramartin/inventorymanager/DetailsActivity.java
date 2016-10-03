@@ -1,9 +1,11 @@
 package eu.laramartin.inventorymanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -22,6 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
     EditText supplierNameEdit;
     EditText supplierPhoneEdit;
     EditText supplierEmailEdit;
+    long currentItemId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,15 @@ public class DetailsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         dbHelper = new InventoryDbHelper(this);
+        Intent intent = getIntent();
+        Bundle currentItemExtras = intent.getExtras();
+
+        if (currentItemExtras == null) {
+            setTitle(getString(R.string.editor_activity_title_new_item));
+        } else {
+            currentItemId = currentItemExtras.getLong("itemId");
+            setTitle(getString(R.string.editor_activity_title_edit_item));
+        }
 
         nameEdit = (EditText) findViewById(R.id.product_name_edit);
         priceEdit = (EditText) findViewById(R.id.price_edit);

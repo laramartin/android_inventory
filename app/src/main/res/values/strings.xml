@@ -13,4 +13,6 @@
     <string name="product_name_title">Product Name</string>
     <string name="currency_details">¥ / item</string>
     <string name="action_save">Save item</string>
+    <string name="editor_activity_title_new_item">Add new item</string>
+    <string name="editor_activity_title_edit_item">Edit item</string>
 </resources>
