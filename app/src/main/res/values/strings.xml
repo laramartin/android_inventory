@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Inventory Manager</string>
+    <string name="sale_button">Sale</string>
 </resources>
