@@ -12,4 +12,5 @@
     <string name="price_title">Price</string>
     <string name="product_name_title">Product Name</string>
     <string name="currency_details">¥ / item</string>
+    <string name="action_save">Save item</string>
 </resources>

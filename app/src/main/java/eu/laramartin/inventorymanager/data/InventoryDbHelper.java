@@ -31,15 +31,15 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
 
     }
 
-    public void insertItem() {
+    public void insertItem(StockItem item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(StockContract.StockEntry.COLUMN_NAME, "Ramune caramel");
-        values.put(StockContract.StockEntry.COLUMN_PRICE, "100 yen");
-        values.put(StockContract.StockEntry.COLUMN_QUANTITY, 25);
-        values.put(StockContract.StockEntry.COLUMN_SUPPLIER_NAME, "Gumi Candy JP");
-        values.put(StockContract.StockEntry.COLUMN_SUPPLIER_PHONE, "+81-123-456-789");
-        values.put(StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL, "gumi_candyJP@gmail.com");
+        values.put(StockContract.StockEntry.COLUMN_NAME, item.getProductName());
+        values.put(StockContract.StockEntry.COLUMN_PRICE, item.getPrice());
+        values.put(StockContract.StockEntry.COLUMN_QUANTITY, item.getPrice());
+        values.put(StockContract.StockEntry.COLUMN_SUPPLIER_NAME, item.getSupplierName());
+        values.put(StockContract.StockEntry.COLUMN_SUPPLIER_PHONE, item.getSupplierPhone());
+        values.put(StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL, item.getSupplierEmail());
         long id = db.insert(StockContract.StockEntry.TABLE_NAME, null, values);
         Log.v(LOG_TAG, "ID row inserted: " + String.valueOf(id));
     }
