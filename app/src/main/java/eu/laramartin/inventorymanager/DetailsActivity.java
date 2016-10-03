@@ -1,6 +1,7 @@
 package eu.laramartin.inventorymanager;
 
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -26,6 +27,9 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         dbHelper = new InventoryDbHelper(this);
 
         nameEdit = (EditText) findViewById(R.id.product_name_edit);
@@ -53,6 +57,9 @@ public class DetailsActivity extends AppCompatActivity {
                 }
                 Toast.makeText(DetailsActivity.this, "Item saved! ", Toast.LENGTH_SHORT).show();
                 finish();
+                return true;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
                 return true;
         }
         return super.onOptionsItemSelected(item);

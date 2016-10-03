@@ -15,11 +15,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailsActivity"
+        <activity
+            android:name=".DetailsActivity"
             android:label="@string/new_product">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eu.laramartin.inventorymanager.MainActivity" />
         </activity>
     </application>
 

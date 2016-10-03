@@ -17,7 +17,7 @@ public class StockCursorAdapter extends CursorAdapter {
 
 
     public StockCursorAdapter(Context context, Cursor c) {
-        super(context, c);
+        super(context, c, 0);
     }
 
     @Override

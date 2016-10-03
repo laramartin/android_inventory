@@ -7,7 +7,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import eu.laramartin.inventorymanager.data.InventoryDbHelper;
 
@@ -40,13 +42,18 @@ public class MainActivity extends AppCompatActivity {
         listView.setEmptyView(emptyView);
 
         Cursor cursor = dbHelper.readStock();
-        while (cursor.moveToNext()) {
-            Log.v(LOG_TAG, "Stock: " + cursor.getInt(0) + " " + cursor.getString(1) +
-                    " " + cursor.getString(2) + " " + cursor.getInt(3));
-        }
 
         adapter = new StockCursorAdapter(this, cursor);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long itemId) {
+                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                //intent.putExtra("itemId", itemId);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "item id: " + itemId, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
