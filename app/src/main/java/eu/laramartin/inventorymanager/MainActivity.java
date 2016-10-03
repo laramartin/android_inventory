@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final static String LOG_TAG = MainActivity.class.getCanonicalName();
     InventoryDbHelper dbHelper;
+    StockCursorAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
             Log.v(LOG_TAG, "Stock: " + cursor.getInt(0) + " " + cursor.getString(1) +
                     " " + cursor.getString(2) + " " + cursor.getInt(3));
         }
+
+        adapter = new StockCursorAdapter(this, cursor);
+        listView.setAdapter(adapter);
+
 
     }
 
