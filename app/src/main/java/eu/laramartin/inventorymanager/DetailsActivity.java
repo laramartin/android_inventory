@@ -3,6 +3,7 @@ package eu.laramartin.inventorymanager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -135,13 +136,15 @@ public class DetailsActivity extends AppCompatActivity {
                 return true;
             case R.id.action_order:
                 // dialog with phone and email
-                showDeleteConfirmationDialog();
+                showOrderConfirmationDialog();
                 return true;
             case R.id.action_delete_item:
                 // delete one item
+                showDeleteConfirmationDialog(currentItemId);
                 return true;
             case R.id.action_delete_all_data:
                 //delete all data
+                showDeleteConfirmationDialog(0);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -212,7 +215,7 @@ public class DetailsActivity extends AppCompatActivity {
         supplierEmailEdit.setEnabled(false);
     }
 
-    private void showDeleteConfirmationDialog() {
+    private void showOrderConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.order_message);
         builder.setPositiveButton(R.string.phone, new DialogInterface.OnClickListener() {
@@ -241,4 +244,41 @@ public class DetailsActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    private int deleteAllRowsFromTable() {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        return database.delete(StockContract.StockEntry.TABLE_NAME, null, null);
+    }
+
+    private int deleteOneItemFromTable(long itemId) {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        String selection = StockContract.StockEntry._ID + "=?";
+        String[] selectionArgs = { String.valueOf(itemId) };
+        int rowsDeleted = database.delete(
+                StockContract.StockEntry.TABLE_NAME, selection, selectionArgs);
+        return rowsDeleted;
+    }
+
+    private void showDeleteConfirmationDialog(final long itemId) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.delete_message);
+        builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                if (itemId == 0) {
+                    deleteAllRowsFromTable();
+                } else {
+                    deleteOneItemFromTable(itemId);
+                }
+                finish();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 }
