@@ -41,11 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
         Cursor cursor = dbHelper.readStock();
 
-        adapter = new StockCursorAdapter(this, cursor);
+        adapter = new StockCursorAdapter(this, cursor, dbHelper);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long itemId) {
+                Log.v("main", "on click listview");
                 Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
                 intent.putExtra("itemId", itemId);
                 startActivity(intent);

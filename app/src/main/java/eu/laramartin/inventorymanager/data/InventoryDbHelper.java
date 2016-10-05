@@ -106,4 +106,8 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         Log.v(LOG_TAG, "rows updated: " + rowsUpdated);
     }
 
+    public void sellOneItem() {
+
+    }
+
 }

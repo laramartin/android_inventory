@@ -1,63 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="5">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:paddingLeft="16dp"
-                android:text=""
-                android:id="@+id/product_name"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sale_button"
-                android:id="@+id/sale"
-                android:layout_marginRight="48dp"
-                android:layout_marginEnd="48dp"
-                android:layout_below="@+id/product_name"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
 
             <TextView
+                android:id="@+id/product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="16dp"
                 android:text=""
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/product_name"
+                android:layout_marginEnd="48dp"
+                android:layout_marginRight="48dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:text="@string/sale_button" />
+
+            <TextView
                 android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/sale"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:paddingLeft="16dp"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 tools:text="100yen" />
         </RelativeLayout>
     </LinearLayout>
 
     <TextView
+        android:id="@+id/quantity"
         android:layout_width="0dp"
         android:layout_height="83dp"
         android:layout_weight="1"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=""
-        android:textSize="34sp"
-        android:id="@+id/quantity"
         android:gravity="center_horizontal|center_vertical"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="34sp"
         tools:text="3" />
 
 </LinearLayout>
