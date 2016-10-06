@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         Cursor cursor = dbHelper.readStock();
 
-        adapter = new StockCursorAdapter(this, cursor, dbHelper);
+        adapter = new StockCursorAdapter(this, cursor);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,6 +57,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        adapter.swapCursor(dbHelper.readStock());
+    }
+
+    public void clickOnViewItem(long id) {
+        Log.v("mainactivity", "on click view");
+        Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra("itemId", id);
+        startActivity(intent);
+    }
+
+    public void clickOnSale(long id, int quantity) {
+        dbHelper.sellOneItem(id, quantity);
         adapter.swapCursor(dbHelper.readStock());
     }
 }

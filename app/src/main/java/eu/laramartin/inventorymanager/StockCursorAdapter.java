@@ -1,9 +1,7 @@
 package eu.laramartin.inventorymanager;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,6 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-import eu.laramartin.inventorymanager.data.InventoryDbHelper;
 import eu.laramartin.inventorymanager.data.StockContract;
 
 /**
@@ -20,11 +17,11 @@ import eu.laramartin.inventorymanager.data.StockContract;
 public class StockCursorAdapter extends CursorAdapter {
 
 
-    private InventoryDbHelper dbHelper;
+    private final MainActivity activity;
 
-    public StockCursorAdapter(Context context, Cursor c, InventoryDbHelper dbHelper) {
+    public StockCursorAdapter(MainActivity context, Cursor c) {
         super(context, c, 0);
-        this.dbHelper = dbHelper;
+        this.activity = context;
     }
 
     @Override
@@ -40,7 +37,7 @@ public class StockCursorAdapter extends CursorAdapter {
         Button sale = (Button) view.findViewById(R.id.sale);
 
         String name = cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_NAME));
-        int quantity = cursor.getInt(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_QUANTITY));
+        final int quantity = cursor.getInt(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_QUANTITY));
         String price = cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_PRICE));
 
         nameTextView.setText(name);
@@ -50,21 +47,33 @@ public class StockCursorAdapter extends CursorAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.v("adapter", "on click view");
-                Intent intent = new Intent(context, DetailsActivity.class);
-                intent.putExtra("itemId", cursor.getLong(cursor.getColumnIndex(StockContract.StockEntry._ID)));
-                context.startActivity(intent);
+                activity.clickOnViewItem(cursor.getLong(cursor.getColumnIndex(StockContract.StockEntry._ID)));
             }
         });
 
         sale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.v("adapter", "on click button");
-                dbHelper.sellOneItem();
-
+                activity.clickOnSale(cursor.getLong(cursor.getColumnIndex(StockContract.StockEntry._ID)),
+                        quantity);
             }
         });
+
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+
+//            }
+//        });
+//
+//        sale.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Log.v("adapter", "on click button");
+//
+//
+//            }
+//        });
 
     }
 }

@@ -22,7 +22,6 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.v(LOG_TAG, "create table: " + StockContract.StockEntry.CREATE_TABLE_STOCK);
         db.execSQL(StockContract.StockEntry.CREATE_TABLE_STOCK);
     }
 
@@ -32,7 +31,6 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
     }
 
     public void insertItem(StockItem item) {
-        Log.v(LOG_TAG, "inserting item: " + item.toString());
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(StockContract.StockEntry.COLUMN_NAME, item.getProductName());
@@ -42,7 +40,6 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         values.put(StockContract.StockEntry.COLUMN_SUPPLIER_PHONE, item.getSupplierPhone());
         values.put(StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL, item.getSupplierEmail());
         long id = db.insert(StockContract.StockEntry.TABLE_NAME, null, values);
-        Log.v(LOG_TAG, "ID row inserted: " + String.valueOf(id));
     }
 
     public Cursor readStock() {
@@ -95,19 +92,26 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
     }
 
     public void updateItem(long currentItemId, StockItem item) {
-        Log.v(LOG_TAG, "Update item " + currentItemId + " " + item.toString());
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(StockContract.StockEntry.COLUMN_QUANTITY, item.getQuantity());
         String selection = StockContract.StockEntry._ID + "=?";
         String[] selectionArgs = new String[] { String.valueOf(currentItemId) };
-        int rowsUpdated = db.update(StockContract.StockEntry.TABLE_NAME,
+        db.update(StockContract.StockEntry.TABLE_NAME,
                 values, selection, selectionArgs);
-        Log.v(LOG_TAG, "rows updated: " + rowsUpdated);
     }
 
-    public void sellOneItem() {
-
+    public void sellOneItem(long itemId, int quantity) {
+        SQLiteDatabase db = getWritableDatabase();
+        int newQuantity = 0;
+        if (quantity > 0) {
+            newQuantity = quantity -1;
+        }
+        ContentValues values = new ContentValues();
+        values.put(StockContract.StockEntry.COLUMN_QUANTITY, newQuantity);
+        String selection = StockContract.StockEntry._ID + "=?";
+        String[] selectionArgs = new String[] { String.valueOf(itemId) };
+        db.update(StockContract.StockEntry.TABLE_NAME,
+                values, selection, selectionArgs);
     }
-
 }
