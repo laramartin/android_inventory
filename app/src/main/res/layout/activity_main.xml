@@ -24,7 +24,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Nothing here..."/>
+            android:text="@string/empty_list_hint"
+            android:layout_marginLeft="96dp"
+            android:layout_marginRight="96dp"/>
 
     </LinearLayout>
 

@@ -24,4 +24,5 @@
     <string name="delete_message">Are you sure you want to procede with the deletion?</string>
     <string name="delete">Accept</string>
     <string name="cancel">Cancel</string>
+    <string name="empty_list_hint">Start adding some items to your inventory</string>
 </resources>
