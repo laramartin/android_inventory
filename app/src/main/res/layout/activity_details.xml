@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true">
         <TextView
             android:id="@+id/product_name_title"
             style="@style/details_title"
@@ -20,7 +22,7 @@
         <EditText
             android:id="@+id/product_name_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/price_title"
@@ -39,7 +41,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="number"/>
+                android:inputType="number"
+                />
 
             <TextView
                 android:layout_width="0dp"
@@ -85,8 +88,6 @@
                 android:layout_weight="1"
                 android:src="@drawable/ic_add_black_24dp"/>
 
-
-
         </LinearLayout>
 
         <TextView
@@ -101,7 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/supplier_name_hint"
-            android:inputType="text" />
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/supplier_phone_title"
@@ -115,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/supplier_phone_hint"
-            android:inputType="phone" />
+            android:inputType="phone"/>
 
         <TextView
             android:id="@+id/supplier_email_title"
@@ -129,10 +130,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_email_address"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"/>
 
     </LinearLayout>
-
 
 
 </ScrollView>
