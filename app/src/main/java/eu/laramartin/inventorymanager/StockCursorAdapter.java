@@ -44,36 +44,21 @@ public class StockCursorAdapter extends CursorAdapter {
         quantityTextView.setText(String.valueOf(quantity));
         priceTextView.setText(price);
 
+        final long id = cursor.getLong(cursor.getColumnIndex(StockContract.StockEntry._ID));
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.clickOnViewItem(cursor.getLong(cursor.getColumnIndex(StockContract.StockEntry._ID)));
+                activity.clickOnViewItem(id);
             }
         });
 
         sale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.clickOnSale(cursor.getLong(cursor.getColumnIndex(StockContract.StockEntry._ID)),
+                activity.clickOnSale(id,
                         quantity);
             }
         });
-
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-
-//            }
-//        });
-//
-//        sale.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.v("adapter", "on click button");
-//
-//
-//            }
-//        });
-
     }
 }
