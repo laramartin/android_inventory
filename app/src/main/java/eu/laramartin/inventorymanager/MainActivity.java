@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import eu.laramartin.inventorymanager.data.InventoryDbHelper;
+import eu.laramartin.inventorymanager.data.StockItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,5 +96,125 @@ public class MainActivity extends AppCompatActivity {
     public void clickOnSale(long id, int quantity) {
         dbHelper.sellOneItem(id, quantity);
         adapter.swapCursor(dbHelper.readStock());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_add_dummy_data:
+                // add dummy data for testing
+                addDummyData();
+                adapter.swapCursor(dbHelper.readStock());
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void addDummyData() {
+        //StockItem(String productName, String price, int quantity, String supplierName, String supplierPhone, String supplierEmail)
+        StockItem gummibears = new StockItem(
+            "Gummibears",
+                "10",
+                45,
+                "Haribo GmbH",
+                "+49 000 000 0000",
+                "haribo@sweet.com"
+        );
+        dbHelper.insertItem(gummibears);
+
+        StockItem peaches = new StockItem(
+                "Peaches",
+                "10",
+                24,
+                "Haribo GmbH",
+                "+49 000 000 0000",
+                "haribo@sweet.com"
+        );
+        dbHelper.insertItem(peaches);
+
+        StockItem cherries = new StockItem(
+                "Cherries",
+                "11",
+                74,
+                "Haribo GmbH",
+                "+49 000 000 0000",
+                "haribo@sweet.com"
+        );
+        dbHelper.insertItem(cherries);
+
+        StockItem cola = new StockItem(
+                "Cola",
+                "13",
+                44,
+                "Haribo GmbH",
+                "+49 000 000 0000",
+                "haribo@sweet.com"
+        );
+        dbHelper.insertItem(cola);
+
+        StockItem fruitSalad = new StockItem(
+                "Fruit salad",
+                "20",
+                34,
+                "Haribo GmbH",
+                "+49 000 000 0000",
+                "haribo@sweet.com"
+        );
+        dbHelper.insertItem(fruitSalad);
+
+        StockItem smurfs = new StockItem(
+                "Smurfs",
+                "12",
+                26,
+                "Haribo GmbH",
+                "+49 000 000 0000",
+                "haribo@sweet.com"
+        );
+        dbHelper.insertItem(smurfs);
+
+        StockItem fresquito = new StockItem(
+                "Fresquito",
+                "9",
+                54,
+                "Fiesta S.A.",
+                "+34 000 000 0000",
+                "fiesta@dulce.com"
+        );
+        dbHelper.insertItem(fresquito);
+
+        StockItem hotChillies = new StockItem(
+                "Hot chillies",
+                "13",
+                12,
+                "Fiesta S.A.",
+                "+34 000 000 0000",
+                "fiesta@dulce.com"
+        );
+        dbHelper.insertItem(hotChillies);
+
+        StockItem lolipopStrawberry = new StockItem(
+                "Lolipop strawberry",
+                "12",
+                62,
+                "Fiesta S.A.",
+                "+34 000 000 0000",
+                "fiesta@dulce.com"
+        );
+        dbHelper.insertItem(lolipopStrawberry);
+
+        StockItem heartGummy = new StockItem(
+                "Heart gummy jellies",
+                "13",
+                22,
+                "Fiesta S.A.",
+                "+34 000 000 0000",
+                "fiesta@dulce.com"
+        );
+        dbHelper.insertItem(heartGummy);
     }
 }
