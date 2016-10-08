@@ -16,7 +16,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,7 +81,6 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 subtractOneToQuantity();
-                Log.v(LOG_TAG, "touched!");
                 infoItemHasChanged = true;
             }
         });
@@ -91,7 +89,6 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sumOneToQuantity();
-                Log.v(LOG_TAG, "touched!");
                 infoItemHasChanged = true;
             }
         });
@@ -100,11 +97,9 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tryToOpenImageSelector();
-                Log.v(LOG_TAG, "touched!");
                 infoItemHasChanged = true;
             }
         });
-
     }
 
     @Override
@@ -127,8 +122,6 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void showUnsavedChangesDialog(
             DialogInterface.OnClickListener discardButtonClickListener) {
-        // Create an AlertDialog.Builder and set the message, and click listeners
-        // for the positive and negative buttons on the dialog.
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.unsaved_changes_dialog_msg);
         builder.setPositiveButton(R.string.discard, discardButtonClickListener);
@@ -379,20 +372,17 @@ public class DetailsActivity extends AppCompatActivity {
                         MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
             return;
         }
-
         openImageSelector();
     }
 
     private void openImageSelector() {
         Intent intent;
-
         if (Build.VERSION.SDK_INT < 19) {
             intent = new Intent(Intent.ACTION_GET_CONTENT);
         } else {
             intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
         }
-
         intent.setType("image/*");
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
@@ -405,15 +395,10 @@ public class DetailsActivity extends AppCompatActivity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                     openImageSelector();
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
+                    // permission was granted
                 }
             }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 
@@ -430,36 +415,9 @@ public class DetailsActivity extends AppCompatActivity {
 
             if (resultData != null) {
                 actualUri = resultData.getData();
-                Log.i(LOG_TAG, "Uri: " + actualUri.toString());
-
                 imageView.setImageURI(actualUri);
                 imageView.invalidate();
-//                mTextView.setText(mUri.toString());
-                //imageView.setImageBitmap(getBitmapFromUri(uri));
             }
         }
     }
-
-//    private Bitmap getBitmapFromUri(Uri uri) {
-//        ParcelFileDescriptor parcelFileDescriptor = null;
-//        try {
-//            parcelFileDescriptor =
-//                    getContentResolver().openFileDescriptor(uri, "r");
-//            FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
-//            Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
-//            return image;
-//        } catch (Exception e) {
-//            Log.e(LOG_TAG, "Failed to load image.", e);
-//            return null;
-//        } finally {
-//            try {
-//                if (parcelFileDescriptor != null) {
-//                    parcelFileDescriptor.close();
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                Log.e(LOG_TAG, "Error closing ParcelFile Descriptor");
-//            }
-//        }
-//    }
 }

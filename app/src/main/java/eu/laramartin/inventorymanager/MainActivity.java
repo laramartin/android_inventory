@@ -5,12 +5,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import eu.laramartin.inventorymanager.data.InventoryDbHelper;
@@ -35,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
                 startActivity(intent);
-                Log.v(LOG_TAG, "Floating button pressed");
-                //dbHelper.insertItem();
             }
         });
 
@@ -48,15 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new StockCursorAdapter(this, cursor);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long itemId) {
-                Log.v("main", "on click listview");
-                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                intent.putExtra("itemId", itemId);
-                startActivity(intent);
-            }
-        });
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -64,12 +51,9 @@ public class MainActivity extends AppCompatActivity {
                     final int currentFirstVisibleItem = view.getFirstVisiblePosition();
                     if (currentFirstVisibleItem > lastVisibleItem) {
                         fab.show();
-                        Log.i("a", "scrolling down...");
                     } else if (currentFirstVisibleItem < lastVisibleItem) {
                         fab.hide();
-                        Log.i("a", "scrolling up...");
                     }
-
                 lastVisibleItem = currentFirstVisibleItem;
             }
 
@@ -87,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickOnViewItem(long id) {
-        Log.v("mainactivity", "on click view");
         Intent intent = new Intent(this, DetailsActivity.class);
         intent.putExtra("itemId", id);
         startActivity(intent);
@@ -115,8 +98,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Add data for demo purposes
+     */
     private void addDummyData() {
-        //StockItem(String productName, String price, int quantity, String supplierName, String supplierPhone, String supplierEmail)
         StockItem gummibears = new StockItem(
             "Gummibears",
                 "10 €",

@@ -33,12 +33,5 @@ public class StockContract {
                 StockContract.StockEntry.COLUMN_SUPPLIER_PHONE + " TEXT NOT NULL," +
                 StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL + " TEXT NOT NULL," +
                 StockEntry.COLUMN_IMAGE + " TEXT NOT NULL" + ");";
-
-//        public static final String SUPPLIER_NAME_DRINKS = "Durinku JP";
-//        public static final String SUPPLIER_PHONE_DRINKS = "+81 123-456-789";
-//        public static final String SUPPLIER_EMAIL_DRINKS = "durinkuJP@gmail.com";
-//        public static final String SUPPLIER_NAME_FOODS = "Gumi Candy JP";
-//        public static final String SUPPLIER_PHONE_FOODS = "+81 987-654-321";
-//        public static final String SUPPLIER_EMAIL_FOODS = "gumi_candyJP@gmail.com";
     }
 }

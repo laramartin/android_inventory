@@ -47,6 +47,9 @@ public class StockItem {
         return supplierEmail;
     }
 
+    public String getImage() {
+        return image;
+    }
     @Override
     public String toString() {
         return "StockItem{" +
@@ -59,7 +62,4 @@ public class StockItem {
                 '}';
     }
 
-    public String getImage() {
-        return image;
-    }
 }

@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="number"
-            android:maxLength="6"/>
+            android:maxLength="6" />
 
         <TextView
             android:id="@+id/quantity_title"
@@ -123,6 +123,7 @@
 
         <TextView
             android:id="@+id/image_title"
+            style="@style/details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/image" />
@@ -135,11 +136,9 @@
 
         <ImageView
             android:id="@+id/image_view"
-            style="@style/details_title"
             android:layout_width="match_parent"
             android:layout_height="200dp" />
 
     </LinearLayout>
-
 
 </ScrollView>
