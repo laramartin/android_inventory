@@ -47,6 +47,7 @@ public class DetailsActivity extends AppCompatActivity {
     ImageView imageView;
     Uri actualUri;
     private static final int PICK_IMAGE_REQUEST = 0;
+    Boolean infoItemHasChanged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +82,8 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 subtractOneToQuantity();
+                Log.v(LOG_TAG, "touched!");
+                infoItemHasChanged = true;
             }
         });
 
@@ -88,6 +91,8 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sumOneToQuantity();
+                Log.v(LOG_TAG, "touched!");
+                infoItemHasChanged = true;
             }
         });
 
@@ -95,9 +100,47 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tryToOpenImageSelector();
+                Log.v(LOG_TAG, "touched!");
+                infoItemHasChanged = true;
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!infoItemHasChanged) {
+            super.onBackPressed();
+            return;
+        }
+        DialogInterface.OnClickListener discardButtonClickListener =
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // User clicked "Discard" button, close the current activity.
+                        finish();
+                    }
+                };
+        // Show dialog that there are unsaved changes
+        showUnsavedChangesDialog(discardButtonClickListener);
+    }
+
+    private void showUnsavedChangesDialog(
+            DialogInterface.OnClickListener discardButtonClickListener) {
+        // Create an AlertDialog.Builder and set the message, and click listeners
+        // for the positive and negative buttons on the dialog.
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.unsaved_changes_dialog_msg);
+        builder.setPositiveButton(R.string.discard, discardButtonClickListener);
+        builder.setNegativeButton(R.string.keep_editing, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void subtractOneToQuantity() {
@@ -156,7 +199,20 @@ public class DetailsActivity extends AppCompatActivity {
                 finish();
                 return true;
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                if (!infoItemHasChanged) {
+                    NavUtils.navigateUpFromSameTask(this);
+                    return true;
+                }
+                DialogInterface.OnClickListener discardButtonClickListener =
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                // User clicked "Discard" button, navigate to parent activity.
+                                NavUtils.navigateUpFromSameTask(DetailsActivity.this);
+                            }
+                        };
+                // Show a dialog that notifies the user they have unsaved changes
+                showUnsavedChangesDialog(discardButtonClickListener);
                 return true;
             case R.id.action_order:
                 // dialog with phone and email

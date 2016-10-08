@@ -28,4 +28,7 @@
     <string name="action_add_dummy_data">Add Dummy Data</string>
     <string name="select_image">Select image</string>
     <string name="image">Image</string>
+    <string name="unsaved_changes_dialog_msg">There are unsaved changes in the product information. Do you want to continue?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep editing</string>
 </resources>
