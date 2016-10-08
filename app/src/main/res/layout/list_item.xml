@@ -3,43 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingBottom="16dp">
 
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:layout_weight="2"/>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="6">
+        android:layout_weight="6"
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/product_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:text=""
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/product_name"
-                android:layout_width="wrap_content"
+                android:id="@+id/price"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
+                android:layout_weight="1"
                 android:paddingLeft="16dp"
                 android:text=""
-                android:textSize="24sp" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                tools:text="100yen" />
 
             <Button
                 android:id="@+id/sale"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/product_name"
+                android:layout_weight="1"
                 android:layout_marginEnd="48dp"
                 android:layout_marginRight="48dp"
                 android:focusable="false"
@@ -47,28 +55,18 @@
                 android:text="@string/sale_button" />
 
             <TextView
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/sale"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:paddingLeft="16dp"
+                android:id="@+id/quantity"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
                 android:text=""
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:text="100yen" />
-        </RelativeLayout>
-    </LinearLayout>
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="34sp"
+                tools:text="3" />
 
-    <TextView
-        android:id="@+id/quantity"
-        android:layout_width="0dp"
-        android:layout_height="83dp"
-        android:layout_weight="1"
-        android:gravity="center_horizontal|center_vertical"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="34sp"
-        tools:text="3" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
