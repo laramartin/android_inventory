@@ -250,7 +250,7 @@ public class DetailsActivity extends AppCompatActivity {
         if (!checkIfValueSet(supplierEmailEdit, "supplier email")) {
             isAllOk = false;
         }
-        if (actualUri == null) {
+        if (actualUri == null && currentItemId == 0) {
             isAllOk = false;
             imageBtn.setError("Missing image");
         }

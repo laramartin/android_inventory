@@ -33,26 +33,13 @@
             android:layout_height="wrap_content"
             android:text="@string/price_title" />
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/price_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/price_edit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="number" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/currency_details" />
-
-        </LinearLayout>
-
+            android:layout_weight="1"
+            android:inputType="number"
+            android:maxLength="6"/>
 
         <TextView
             android:id="@+id/quantity_title"
@@ -81,7 +68,7 @@
                 android:layout_weight="3"
                 android:gravity="center"
                 android:inputType="number"
-                android:maxLength="7" />
+                android:maxLength="4" />
 
             <ImageButton
                 android:id="@+id/increase_quantity"

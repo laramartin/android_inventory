@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,7 +35,7 @@ public class StockCursorAdapter extends CursorAdapter {
         TextView nameTextView = (TextView) view.findViewById(R.id.product_name);
         TextView quantityTextView = (TextView) view.findViewById(R.id.quantity);
         TextView priceTextView = (TextView) view.findViewById(R.id.price);
-        Button sale = (Button) view.findViewById(R.id.sale);
+        ImageView sale = (ImageView) view.findViewById(R.id.sale);
         ImageView image = (ImageView) view.findViewById(R.id.image_view);
 
         String name = cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_NAME));
