@@ -75,7 +75,8 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
                 StockContract.StockEntry.COLUMN_QUANTITY,
                 StockContract.StockEntry.COLUMN_SUPPLIER_NAME,
                 StockContract.StockEntry.COLUMN_SUPPLIER_PHONE,
-                StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL
+                StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL,
+                StockContract.StockEntry.COLUMN_IMAGE
         };
         String selection = StockContract.StockEntry._ID + "=?";
         String[] selectionArgs = new String[] { String.valueOf(itemId) };

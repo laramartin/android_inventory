@@ -11,8 +11,6 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.File;
-
 import eu.laramartin.inventorymanager.data.StockContract;
 
 /**
@@ -45,7 +43,7 @@ public class StockCursorAdapter extends CursorAdapter {
         final int quantity = cursor.getInt(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_QUANTITY));
         String price = cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_PRICE));
 
-        image.setImageURI(Uri.parse(new File("/storage/emulated/0/Download/flushed.jpg").toString()));
+        image.setImageURI(Uri.parse(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_IMAGE))));
 
         nameTextView.setText(name);
         quantityTextView.setText(String.valueOf(quantity));

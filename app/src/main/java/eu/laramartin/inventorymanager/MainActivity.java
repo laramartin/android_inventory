@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 "Haribo GmbH",
                 "+49 000 000 0000",
                 "haribo@sweet.com",
-                "/storage/emulated/0/Download/flushed.jpg");
+                "android.resource://eu.laramartin.inventorymanager/drawable/gummibear");
         dbHelper.insertItem(gummibears);
 
         StockItem peaches = new StockItem(
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 "Haribo GmbH",
                 "+49 000 000 0000",
                 "haribo@sweet.com",
-                "/storage/emulated/0/Download/flushed.jpg");
+                "android.resource://eu.laramartin.inventorymanager/drawable/peach");
         dbHelper.insertItem(peaches);
 
         StockItem cherries = new StockItem(
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 "Haribo GmbH",
                 "+49 000 000 0000",
                 "haribo@sweet.com",
-                "/storage/emulated/0/Download/flushed.jpg");
+                "android.resource://eu.laramartin.inventorymanager/drawable/cherry");
         dbHelper.insertItem(cherries);
 
         StockItem cola = new StockItem(
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                 "Haribo GmbH",
                 "+49 000 000 0000",
                 "haribo@sweet.com",
-                "/storage/emulated/0/Download/flushed.jpg");
+                "android.resource://eu.laramartin.inventorymanager/drawable/cola");
         dbHelper.insertItem(cola);
 
         StockItem fruitSalad = new StockItem(
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 "Haribo GmbH",
                 "+49 000 000 0000",
                 "haribo@sweet.com",
-                "/storage/emulated/0/Download/flushed.jpg");
+                "android.resource://eu.laramartin.inventorymanager/drawable/fruit_salad");
         dbHelper.insertItem(fruitSalad);
 
         StockItem smurfs = new StockItem(
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                 "Haribo GmbH",
                 "+49 000 000 0000",
                 "haribo@sweet.com",
-                "/storage/emulated/0/Download/flushed.jpg");
+                "android.resource://eu.laramartin.inventorymanager/drawable/smurfs");
         dbHelper.insertItem(smurfs);
 
         StockItem fresquito = new StockItem(
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 "Fiesta S.A.",
                 "+34 000 000 0000",
                 "fiesta@dulce.com",
-                "/storage/emulated/0/Download/flushed.jpg");
+                "android.resource://eu.laramartin.inventorymanager/drawable/fresquito");
         dbHelper.insertItem(fresquito);
 
         StockItem hotChillies = new StockItem(
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 "Fiesta S.A.",
                 "+34 000 000 0000",
                 "fiesta@dulce.com",
-                "/storage/emulated/0/Download/flushed.jpg");
+                "android.resource://eu.laramartin.inventorymanager/drawable/hot_chillies");
         dbHelper.insertItem(hotChillies);
 
         StockItem lolipopStrawberry = new StockItem(
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 "Fiesta S.A.",
                 "+34 000 000 0000",
                 "fiesta@dulce.com",
-                "/storage/emulated/0/Download/flushed.jpg");
+                "android.resource://eu.laramartin.inventorymanager/drawable/lolipop");
         dbHelper.insertItem(lolipopStrawberry);
 
         StockItem heartGummy = new StockItem(
@@ -214,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
                 "Fiesta S.A.",
                 "+34 000 000 0000",
                 "fiesta@dulce.com",
-                "/storage/emulated/0/Download/flushed.jpg");
+                "android.resource://eu.laramartin.inventorymanager/drawable/heart_gummy");
         dbHelper.insertItem(heartGummy);
     }
 }

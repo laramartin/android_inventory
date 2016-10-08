@@ -7,12 +7,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
@@ -27,9 +24,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
 
 import eu.laramartin.inventorymanager.data.InventoryDbHelper;
 import eu.laramartin.inventorymanager.data.StockContract;
@@ -51,6 +45,7 @@ public class DetailsActivity extends AppCompatActivity {
     ImageButton increaseQuantity;
     Button imageBtn;
     ImageView imageView;
+    Uri actualUri;
     private static final int PICK_IMAGE_REQUEST = 0;
 
     @Override
@@ -209,7 +204,7 @@ public class DetailsActivity extends AppCompatActivity {
                 supplierNameEdit.getText().toString().trim(),
                 supplierPhoneEdit.getText().toString().trim(),
                 supplierEmailEdit.getText().toString().trim(),
-                "/storage/emulated/0/Download/flushed.jpg");
+                actualUri.toString());
         if (currentItemId == 0) {
             dbHelper.insertItem(item);
         } else {
@@ -237,11 +232,13 @@ public class DetailsActivity extends AppCompatActivity {
         supplierNameEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_NAME)));
         supplierPhoneEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_PHONE)));
         supplierEmailEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL)));
+        imageView.setImageURI(Uri.parse(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_IMAGE))));
         nameEdit.setEnabled(false);
         priceEdit.setEnabled(false);
         supplierNameEdit.setEnabled(false);
         supplierPhoneEdit.setEnabled(false);
         supplierEmailEdit.setEnabled(false);
+        imageView.setEnabled(false);
     }
 
     private void showOrderConfirmationDialog() {
@@ -370,10 +367,10 @@ public class DetailsActivity extends AppCompatActivity {
             // provided to this method as a parameter.  Pull that uri using "resultData.getData()"
 
             if (resultData != null) {
-                Uri uri = resultData.getData();
-                Log.i(LOG_TAG, "Uri: " + uri.toString());
+                actualUri = resultData.getData();
+                Log.i(LOG_TAG, "Uri: " + actualUri.toString());
 
-                imageView.setImageURI(uri);
+                imageView.setImageURI(actualUri);
                 imageView.invalidate();
 //                mTextView.setText(mUri.toString());
                 //imageView.setImageBitmap(getBitmapFromUri(uri));
@@ -381,26 +378,26 @@ public class DetailsActivity extends AppCompatActivity {
         }
     }
 
-    private Bitmap getBitmapFromUri(Uri uri) {
-        ParcelFileDescriptor parcelFileDescriptor = null;
-        try {
-            parcelFileDescriptor =
-                    getContentResolver().openFileDescriptor(uri, "r");
-            FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
-            Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
-            return image;
-        } catch (Exception e) {
-            Log.e(LOG_TAG, "Failed to load image.", e);
-            return null;
-        } finally {
-            try {
-                if (parcelFileDescriptor != null) {
-                    parcelFileDescriptor.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                Log.e(LOG_TAG, "Error closing ParcelFile Descriptor");
-            }
-        }
-    }
+//    private Bitmap getBitmapFromUri(Uri uri) {
+//        ParcelFileDescriptor parcelFileDescriptor = null;
+//        try {
+//            parcelFileDescriptor =
+//                    getContentResolver().openFileDescriptor(uri, "r");
+//            FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+//            Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+//            return image;
+//        } catch (Exception e) {
+//            Log.e(LOG_TAG, "Failed to load image.", e);
+//            return null;
+//        } finally {
+//            try {
+//                if (parcelFileDescriptor != null) {
+//                    parcelFileDescriptor.close();
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                Log.e(LOG_TAG, "Error closing ParcelFile Descriptor");
+//            }
+//        }
+//    }
 }
