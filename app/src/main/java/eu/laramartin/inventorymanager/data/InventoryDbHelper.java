@@ -93,10 +93,10 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public void updateItem(long currentItemId, StockItem item) {
+    public void updateItem(long currentItemId, int quantity) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(StockContract.StockEntry.COLUMN_QUANTITY, item.getQuantity());
+        values.put(StockContract.StockEntry.COLUMN_QUANTITY, quantity);
         String selection = StockContract.StockEntry._ID + "=?";
         String[] selectionArgs = new String[] { String.valueOf(currentItemId) };
         db.update(StockContract.StockEntry.TABLE_NAME,

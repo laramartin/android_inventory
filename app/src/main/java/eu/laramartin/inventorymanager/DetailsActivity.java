@@ -253,18 +253,20 @@ public class DetailsActivity extends AppCompatActivity {
         if (!isAllOk) {
             return false;
         }
-        StockItem item = new StockItem(
-                nameEdit.getText().toString().trim(),
-                priceEdit.getText().toString().trim(),
-                Integer.parseInt(quantityEdit.getText().toString().trim()),
-                supplierNameEdit.getText().toString().trim(),
-                supplierPhoneEdit.getText().toString().trim(),
-                supplierEmailEdit.getText().toString().trim(),
-                actualUri.toString());
+
         if (currentItemId == 0) {
+            StockItem item = new StockItem(
+                    nameEdit.getText().toString().trim(),
+                    priceEdit.getText().toString().trim(),
+                    Integer.parseInt(quantityEdit.getText().toString().trim()),
+                    supplierNameEdit.getText().toString().trim(),
+                    supplierPhoneEdit.getText().toString().trim(),
+                    supplierEmailEdit.getText().toString().trim(),
+                    actualUri.toString());
             dbHelper.insertItem(item);
         } else {
-            dbHelper.updateItem(currentItemId, item);
+            int quantity = Integer.parseInt(quantityEdit.getText().toString().trim());
+            dbHelper.updateItem(currentItemId, quantity);
         }
         return true;
     }
@@ -294,7 +296,7 @@ public class DetailsActivity extends AppCompatActivity {
         supplierNameEdit.setEnabled(false);
         supplierPhoneEdit.setEnabled(false);
         supplierEmailEdit.setEnabled(false);
-        imageView.setEnabled(false);
+        imageBtn.setEnabled(false);
     }
 
     private void showOrderConfirmationDialog() {
