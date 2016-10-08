@@ -4,7 +4,7 @@
     <string name="new_product">Add new item</string>
     <string name="hint_email_address">supplier@gmail.com</string>
     <string name="supplier_email_title">Supplier E-mail Address</string>
-    <string name="supplier_phone_hint">e.g. +81 000-000-000</string>
+    <string name="supplier_phone_hint">e.g. +49 000-000-000</string>
     <string name="supplier_phone_title">Supplier Phone</string>
     <string name="supplier_name_hint">Candy Supplier GmbH</string>
     <string name="supplier_name_title">Supplier Name</string>
