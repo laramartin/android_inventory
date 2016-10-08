@@ -1,20 +1,35 @@
 package eu.laramartin.inventorymanager;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import java.io.FileDescriptor;
+import java.io.IOException;
 
 import eu.laramartin.inventorymanager.data.InventoryDbHelper;
 import eu.laramartin.inventorymanager.data.StockContract;
@@ -23,6 +38,7 @@ import eu.laramartin.inventorymanager.data.StockItem;
 public class DetailsActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = DetailsActivity.class.getCanonicalName();
+    private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
     private InventoryDbHelper dbHelper;
     EditText nameEdit;
     EditText priceEdit;
@@ -33,6 +49,9 @@ public class DetailsActivity extends AppCompatActivity {
     long currentItemId;
     ImageButton decreaseQuantity;
     ImageButton increaseQuantity;
+    Button imageBtn;
+    ImageView imageView;
+    private static final int PICK_IMAGE_REQUEST = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +69,8 @@ public class DetailsActivity extends AppCompatActivity {
         supplierEmailEdit = (EditText) findViewById(R.id.supplier_email_edit);
         decreaseQuantity = (ImageButton) findViewById(R.id.decrease_quantity);
         increaseQuantity = (ImageButton) findViewById(R.id.increase_quantity);
+        imageBtn = (Button) findViewById(R.id.select_image);
+        imageView = (ImageView) findViewById(R.id.image_view);
 
         dbHelper = new InventoryDbHelper(this);
         currentItemId = getIntent().getLongExtra("itemId", 0);
@@ -74,6 +95,14 @@ public class DetailsActivity extends AppCompatActivity {
                 sumOneToQuantity();
             }
         });
+
+        imageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryToOpenImageSelector();
+            }
+        });
+
     }
 
     private void subtractOneToQuantity() {
@@ -179,8 +208,8 @@ public class DetailsActivity extends AppCompatActivity {
                 Integer.parseInt(quantityEdit.getText().toString().trim()),
                 supplierNameEdit.getText().toString().trim(),
                 supplierPhoneEdit.getText().toString().trim(),
-                supplierEmailEdit.getText().toString().trim()
-        );
+                supplierEmailEdit.getText().toString().trim(),
+                "/storage/emulated/0/Download/flushed.jpg");
         if (currentItemId == 0) {
             dbHelper.insertItem(item);
         } else {
@@ -280,5 +309,98 @@ public class DetailsActivity extends AppCompatActivity {
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    public void tryToOpenImageSelector() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+            return;
+        }
+
+        openImageSelector();
+    }
+
+    private void openImageSelector() {
+        Intent intent;
+
+        if (Build.VERSION.SDK_INT < 19) {
+            intent = new Intent(Intent.ACTION_GET_CONTENT);
+        } else {
+            intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+        }
+
+        intent.setType("image/*");
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    openImageSelector();
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                }
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
+        // The ACTION_OPEN_DOCUMENT intent was sent with the request code READ_REQUEST_CODE.
+        // If the request code seen here doesn't match, it's the response to some other intent,
+        // and the below code shouldn't run at all.
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            // The document selected by the user won't be returned in the intent.
+            // Instead, a URI to that document will be contained in the return intent
+            // provided to this method as a parameter.  Pull that uri using "resultData.getData()"
+
+            if (resultData != null) {
+                Uri uri = resultData.getData();
+                Log.i(LOG_TAG, "Uri: " + uri.toString());
+
+                imageView.setImageURI(uri);
+                imageView.invalidate();
+//                mTextView.setText(mUri.toString());
+                //imageView.setImageBitmap(getBitmapFromUri(uri));
+            }
+        }
+    }
+
+    private Bitmap getBitmapFromUri(Uri uri) {
+        ParcelFileDescriptor parcelFileDescriptor = null;
+        try {
+            parcelFileDescriptor =
+                    getContentResolver().openFileDescriptor(uri, "r");
+            FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+            Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+            return image;
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "Failed to load image.", e);
+            return null;
+        } finally {
+            try {
+                if (parcelFileDescriptor != null) {
+                    parcelFileDescriptor.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e(LOG_TAG, "Error closing ParcelFile Descriptor");
+            }
+        }
     }
 }

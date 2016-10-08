@@ -11,14 +11,16 @@ public class StockItem {
     private final String supplierName;
     private final String supplierPhone;
     private final String supplierEmail;
+    private final String image;
 
-    public StockItem(String productName, String price, int quantity, String supplierName, String supplierPhone, String supplierEmail) {
+    public StockItem(String productName, String price, int quantity, String supplierName, String supplierPhone, String supplierEmail, String image) {
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
         this.supplierName = supplierName;
         this.supplierPhone = supplierPhone;
         this.supplierEmail = supplierEmail;
+        this.image = image;
     }
 
     public String getProductName() {
@@ -55,5 +57,9 @@ public class StockItem {
                 ", supplierPhone='" + supplierPhone + '\'' +
                 ", supplierEmail='" + supplierEmail + '\'' +
                 '}';
+    }
+
+    public String getImage() {
+        return image;
     }
 }

@@ -123,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
                 45,
                 "Haribo GmbH",
                 "+49 000 000 0000",
-                "haribo@sweet.com"
-        );
+                "haribo@sweet.com",
+                "/storage/emulated/0/Download/flushed.jpg");
         dbHelper.insertItem(gummibears);
 
         StockItem peaches = new StockItem(
@@ -133,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
                 24,
                 "Haribo GmbH",
                 "+49 000 000 0000",
-                "haribo@sweet.com"
-        );
+                "haribo@sweet.com",
+                "/storage/emulated/0/Download/flushed.jpg");
         dbHelper.insertItem(peaches);
 
         StockItem cherries = new StockItem(
@@ -143,8 +143,8 @@ public class MainActivity extends AppCompatActivity {
                 74,
                 "Haribo GmbH",
                 "+49 000 000 0000",
-                "haribo@sweet.com"
-        );
+                "haribo@sweet.com",
+                "/storage/emulated/0/Download/flushed.jpg");
         dbHelper.insertItem(cherries);
 
         StockItem cola = new StockItem(
@@ -153,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
                 44,
                 "Haribo GmbH",
                 "+49 000 000 0000",
-                "haribo@sweet.com"
-        );
+                "haribo@sweet.com",
+                "/storage/emulated/0/Download/flushed.jpg");
         dbHelper.insertItem(cola);
 
         StockItem fruitSalad = new StockItem(
@@ -163,8 +163,8 @@ public class MainActivity extends AppCompatActivity {
                 34,
                 "Haribo GmbH",
                 "+49 000 000 0000",
-                "haribo@sweet.com"
-        );
+                "haribo@sweet.com",
+                "/storage/emulated/0/Download/flushed.jpg");
         dbHelper.insertItem(fruitSalad);
 
         StockItem smurfs = new StockItem(
@@ -173,8 +173,8 @@ public class MainActivity extends AppCompatActivity {
                 26,
                 "Haribo GmbH",
                 "+49 000 000 0000",
-                "haribo@sweet.com"
-        );
+                "haribo@sweet.com",
+                "/storage/emulated/0/Download/flushed.jpg");
         dbHelper.insertItem(smurfs);
 
         StockItem fresquito = new StockItem(
@@ -183,8 +183,8 @@ public class MainActivity extends AppCompatActivity {
                 54,
                 "Fiesta S.A.",
                 "+34 000 000 0000",
-                "fiesta@dulce.com"
-        );
+                "fiesta@dulce.com",
+                "/storage/emulated/0/Download/flushed.jpg");
         dbHelper.insertItem(fresquito);
 
         StockItem hotChillies = new StockItem(
@@ -193,8 +193,8 @@ public class MainActivity extends AppCompatActivity {
                 12,
                 "Fiesta S.A.",
                 "+34 000 000 0000",
-                "fiesta@dulce.com"
-        );
+                "fiesta@dulce.com",
+                "/storage/emulated/0/Download/flushed.jpg");
         dbHelper.insertItem(hotChillies);
 
         StockItem lolipopStrawberry = new StockItem(
@@ -203,8 +203,8 @@ public class MainActivity extends AppCompatActivity {
                 62,
                 "Fiesta S.A.",
                 "+34 000 000 0000",
-                "fiesta@dulce.com"
-        );
+                "fiesta@dulce.com",
+                "/storage/emulated/0/Download/flushed.jpg");
         dbHelper.insertItem(lolipopStrawberry);
 
         StockItem heartGummy = new StockItem(
@@ -213,8 +213,8 @@ public class MainActivity extends AppCompatActivity {
                 22,
                 "Fiesta S.A.",
                 "+34 000 000 0000",
-                "fiesta@dulce.com"
-        );
+                "fiesta@dulce.com",
+                "/storage/emulated/0/Download/flushed.jpg");
         dbHelper.insertItem(heartGummy);
     }
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 /**
  * Created by lara on 2/10/16.
@@ -39,6 +38,7 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         values.put(StockContract.StockEntry.COLUMN_SUPPLIER_NAME, item.getSupplierName());
         values.put(StockContract.StockEntry.COLUMN_SUPPLIER_PHONE, item.getSupplierPhone());
         values.put(StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL, item.getSupplierEmail());
+        values.put(StockContract.StockEntry.COLUMN_IMAGE, item.getImage());
         long id = db.insert(StockContract.StockEntry.TABLE_NAME, null, values);
     }
 
@@ -51,7 +51,8 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
                 StockContract.StockEntry.COLUMN_QUANTITY,
                 StockContract.StockEntry.COLUMN_SUPPLIER_NAME,
                 StockContract.StockEntry.COLUMN_SUPPLIER_PHONE,
-                StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL
+                StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL,
+                StockContract.StockEntry.COLUMN_IMAGE
         };
         Cursor cursor = db.query(
                 StockContract.StockEntry.TABLE_NAME,

@@ -2,12 +2,16 @@ package eu.laramartin.inventorymanager;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
 
 import eu.laramartin.inventorymanager.data.StockContract;
 
@@ -35,10 +39,13 @@ public class StockCursorAdapter extends CursorAdapter {
         TextView quantityTextView = (TextView) view.findViewById(R.id.quantity);
         TextView priceTextView = (TextView) view.findViewById(R.id.price);
         Button sale = (Button) view.findViewById(R.id.sale);
+        ImageView image = (ImageView) view.findViewById(R.id.image_view);
 
         String name = cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_NAME));
         final int quantity = cursor.getInt(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_QUANTITY));
         String price = cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_PRICE));
+
+        image.setImageURI(Uri.parse(new File("/storage/emulated/0/Download/flushed.jpg").toString()));
 
         nameTextView.setText(name);
         quantityTextView.setText(String.valueOf(quantity));

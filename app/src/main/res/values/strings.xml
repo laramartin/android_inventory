@@ -26,4 +26,6 @@
     <string name="cancel">Cancel</string>
     <string name="empty_list_hint">Start adding some items to your inventory</string>
     <string name="action_add_dummy_data">Add Dummy Data</string>
+    <string name="select_image">Select image</string>
+    <string name="image">Image</string>
 </resources>
