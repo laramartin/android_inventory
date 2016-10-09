@@ -22,5 +22,5 @@
 - Includes a demo content (tap the cloud download icon in the action bar)
 
 # Screenshot
-<img src="https://raw.githubusercontent.com/laramartin/android_inventory/master/device-2016-10-08-180530.png" width="300"/>
+<img src="https://raw.githubusercontent.com/laramartin/android_inventory/master/device-2016-10-09-170026.png" width="300"/>
 <img src="https://raw.githubusercontent.com/laramartin/android_inventory/master/device-2016-10-08-181147.png" width="300"/>
