@@ -53,7 +53,6 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/product_name_title"
             style="@style/details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +65,6 @@
             android:nextFocusDown="@+id/price_edit" />
 
         <TextView
-            android:id="@+id/price_title"
             style="@style/details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,7 +79,6 @@
             android:maxLength="6" />
 
         <TextView
-            android:id="@+id/quantity_title"
             style="@style/details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,7 +116,6 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/supplier_name_title"
             style="@style/details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -133,7 +129,6 @@
             android:inputType="text" />
 
         <TextView
-            android:id="@+id/supplier_phone_title"
             style="@style/details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -147,7 +142,6 @@
             android:inputType="phone" />
 
         <TextView
-            android:id="@+id/supplier_email_title"
             style="@style/details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -161,7 +155,6 @@
             android:inputType="textEmailAddress" />
 
         <TextView
-            android:id="@+id/image_title"
             style="@style/details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
